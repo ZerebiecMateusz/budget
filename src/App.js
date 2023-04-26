@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import { createGlobalStyle } from 'styled-components';
 import './App.css';
+import Navigation from './components/Navigation/Navigation';
+// import theme from 'utils/theme';
+const GlobalStyle = createGlobalStyle`
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li + li {
+          margin-left: 5px;
+        }
+      }
+      `;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <GlobalStyle />
+        <div className="App">
+          <Navigation items={[]} />
+        </div>
+    </>
+  )
 }
 
 export default App;
