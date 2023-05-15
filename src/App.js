@@ -7,8 +7,8 @@ import {
   Route,
   Routes
 } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import Wrapper from './components/Wrapper';
+import { Button } from 'components';
 // import theme from 'utils/theme';
 const GlobalStyle = createGlobalStyle`
       ul {
@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
       `;
 
 function App() {
-  const { t, i18n } = useTranslation();
+
 
   return (
     <>
@@ -31,23 +31,15 @@ function App() {
           <Router>
             <Navigation 
             items={[
-              { content: t('HomePage') , to: '/'},
-              { content: t('Budget') , to: '/budget'}
+              { content: 'HomePage' , to: '/'},
+              { content:'Budget' , to: '/budget'}
             ]} 
             RightElement={(
               <div>
-                <Button
-                  variant="regular"
-                  primary={i18n.language === 'pl'}
-                  onClick={() => changeLanguage('pl')}
-                >
+                <Button>
                   pl
                 </Button>
-                <Button
-                  variant="regular"
-                  primary={i18n.language === 'en'}
-                  onClick={() => changeLanguage('en')}
-                >
+                <Button>
                   en
                 </Button>
               </div>
@@ -63,12 +55,6 @@ function App() {
     </>
   )
 }
-function RootApp() {
-  return (
-    <React.Suspense fallback="...Loading">
-      <App/>
-    </React.Suspense>
-  )
-}
 
-export default RootApp;
+
+export default App;

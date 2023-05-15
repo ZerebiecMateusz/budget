@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Wrapper from '../Wrapper'
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import { Button } from 'components'
 
 
 const Container = styled.div`
@@ -18,13 +19,15 @@ const List = styled.ul`
 display: flex;`
  
 function Navigation( {items = [], RightElement} ) {
+    const { t } = useTranslation();
+
     return ( 
         <Container>
             <Wrapper>
                 <List>
                     {items.map(item => (
                         <li key={item.to}>
-                            <Link to={item.to}>{item.content}</Link>
+                            <Button to={item.to}>{t(item.content)}</Button>
                         </li>
                     ))}
                 </List>
